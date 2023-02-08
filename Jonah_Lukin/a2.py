@@ -164,19 +164,22 @@ class Board():
         val = 0
 
         spacesVisited = []
-                
-        for v in self.valsInBoxes[self.spaceToBox(space[0], space[1])]:
-            spacesVisited.append(v)
-            val+=1
-            
-        for r in self.valsInRows[space[0]]:
-            if r not in spacesVisited:
+        
+        if(self.valsInBoxes is not {}):
+            for v in self.valsInBoxes[self.spaceToBox(space[0], space[1])]:
+                spacesVisited.append(v)
                 val+=1
-                spacesVisited.append(r)
-                
-        for c in self.valsInCols[space[1]]:
-            if c not in spacesVisited:
-                val+=1
+        
+        if(self.valsInRows is not {}):
+            for r in self.valsInRows[space[0]]:
+                if r not in spacesVisited:
+                    val+=1
+                    spacesVisited.append(r)
+                    
+        if(self.valsInCols is not {}):
+            for c in self.valsInCols[space[1]]:
+                if c not in spacesVisited:
+                    val+=1
 
         return val
 
@@ -221,7 +224,23 @@ class Solver:
 
     # returns True if a solution exists and False if one does not
     def solveBoard(self, board):
-        raise NotImplementedError
+
+        space = Board.getMostConstrainedUnsolvedSpace(board)
+
+        if space is None:
+            return True
+
+        for i in range(1,board.n2 + 1):
+            if board.isValidMove(space, i):
+                board.makeMove(space, i)
+
+                if self.solveBoard(board):
+                    return True
+                
+            elif space in board.board: 
+                board.undoMove(space, i)      
+
+        return False
 
 
 if __name__ == "__main__":
