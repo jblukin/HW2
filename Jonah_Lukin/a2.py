@@ -112,24 +112,42 @@ class Board():
 
     # makes a move, records it in its row, col, and box, and removes the space from unsolvedSpaces
     def makeMove(self, space, value):
-        raise NotImplementedError
+
+        if(self.isValidMove(space, value)):
+            self.valsInBoxes[self.spaceToBox(space[0], space[1])] = value
+            self.valsInRows[space[0]] = value
+            self.valsInCols[space[1]] = value
+            self.unsolvedSpaces.remove(space)
+            self.board[space] = value
 
     # removes the move, its record in its row, col, and box, and adds the space back to unsolvedSpaces
     def undoMove(self, space, value):
-        raise NotImplementedError
+        self.valsInBoxes[self.spaceToBox(space[0], space[1])] = None
+        self.valsInRows[space[0]] = None
+        self.valsInCols[space[1]] = None
+        self.unsolvedSpaces.add(space)
+        self.board.__delitem__(space)
 
     # returns True if the space is empty and on the board,
     # and assigning value to it if not blocked by any constraints
     def isValidMove(self, space, value):
+
         for s in self.unsolvedSpaces:
+
             if(space == s):
+
                 for v in self.valsInRows[space[0]]:
+
                     if(v == value):
                         return False
+                    
                 for v in self.valsInCols[space[1]]:
+
                     if(v == value):
                         return False
+                    
                 for v in self.valsInBoxes[self.spaceToBox(space[0], space[1])]:
+
                     if(v == value):
                         return False
                     
@@ -137,45 +155,51 @@ class Board():
                     return False
          
                 return True
+            
         return False
 
     # optional helper function for use by getMostConstrainedUnsolvedSpace
     def evaluateSpace(self, space):
+
         val = 0
 
-        listOfIterated = []
-
-        for v in self.valsInRows[space[0]]:
-                
-                val+=1
-                listOfIterated.append(self.board.get(v))
-                
-        for v in self.valsInCols[space[1]]:
-                
-                val+=1
-                listOfIterated.append(self.board.get(v))
+        spacesVisited = []
                 
         for v in self.valsInBoxes[self.spaceToBox(space[0], space[1])]:
-            for iter in listOfIterated:
-                if(v != iter):
-                    val+=1
-        
-        
+            spacesVisited.append(v)
+            val+=1
+            
+        for r in self.valsInRows[space[0]]:
+            if r not in spacesVisited:
+                val+=1
+                spacesVisited.append(r)
+                
+        for c in self.valsInCols[space[1]]:
+            if c not in spacesVisited:
+                val+=1
+
         return val
 
     # gets the unsolved space with the most current constraints
     # returns None if unsolvedSpaces is empty
     def getMostConstrainedUnsolvedSpace(self):
+
         mostConstrainedValue = 0
         mostConstrainedSpace = None
+
         if(len(self.unsolvedSpaces) > 0):
+
             for s in self.unsolvedSpaces:
+
                 currentCheck = self.evaluateSpace(s)
 
                 if(currentCheck > mostConstrainedValue):
+
                     mostConstrainedValue = currentCheck
                     mostConstrainedSpace = s
+                
             return mostConstrainedSpace
+        
         return None
 
 class Solver:

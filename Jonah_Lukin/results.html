@@ -24,21 +24,21 @@
       <div class="mdl-layout__drawer">
         <a class="mdl-layout-title" href="#top" style="text-decoration: none;">A2: Sudoku</a>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link unimplemented" href="#makeMove">
-            <i class="material-icons">more_horiz</i>
-            <code>makeMove</code> (0/10)
+          <a class="mdl-navigation__link pass" href="#makeMove">
+            <i class="material-icons">check_circle</i>
+            <code>makeMove</code> (10/10)
           </a>
-          <a class="mdl-navigation__link unimplemented" href="#undoMove">
-            <i class="material-icons">more_horiz</i>
-            <code>undoMove</code> (0/10)
+          <a class="mdl-navigation__link pass" href="#undoMove">
+            <i class="material-icons">check_circle</i>
+            <code>undoMove</code> (10/10)
           </a>
           <a class="mdl-navigation__link pass" href="#isValidMove">
             <i class="material-icons">check_circle</i>
             <code>isValidMove</code> (10/10)
           </a>
-          <a class="mdl-navigation__link info" href="#getMostConstrainedUnsolvedSpace">
-            <i class="material-icons">feedback</i>
-            <code>getMostCon</code>... (10/20)
+          <a class="mdl-navigation__link pass" href="#getMostConstrainedUnsolvedSpace">
+            <i class="material-icons">check_circle</i>
+            <code>getMostCon</code>... (20/20)
           </a>
           <a class="mdl-navigation__link unimplemented" href="#solve">
             <i class="material-icons">more_horiz</i>
@@ -54,15 +54,37 @@
         <div id="top"></div>
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
-            <h1>Test Results for A2: Sudoku (20/100)</h1>
+            <h1>Test Results for A2: Sudoku (50/100)</h1>
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="makeMove">
-            <h2><code>makeMove</code>: Not implemented. (0/10)</h2>
-            <h4>Time elapsed: 0.005s</h4>
+            <h2><code>makeMove</code>: Pass.  (10/10)</h2>
+            <h4>Time elapsed: 0.017s</h4>
+            <ul>
+              <li>
+                <h5>Assigns space to value in the board. (PASS: 3/3)</h5>
+              </li>
+              <li>
+                <h5>Records that value has already occurred in the row, column, and box of space. (PASS: 5/5)</h5>
+              </li>
+              <li>
+                <h5>Removes space from the set of unsolved spaces. (PASS: 2/2)</h5>
+              </li>
+            </ul>
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="undoMove">
-            <h2><code>undoMove</code>: Not implemented. (0/10)</h2>
-            <h4>Time elapsed: 0.001s</h4>
+            <h2><code>undoMove</code>: Pass.  (10/10)</h2>
+            <h4>Time elapsed: 0.018s</h4>
+            <ul>
+              <li>
+                <h5>Deletes space from the board. (PASS: 3/3)</h5>
+              </li>
+              <li>
+                <h5>Records that value no longer appears in the row, column, and box of space. (PASS: 5/5)</h5>
+              </li>
+              <li>
+                <h5>Adds space to the set of unsolved spaces. (PASS: 2/2)</h5>
+              </li>
+            </ul>
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="isValidMove">
             <h2><code>isValidMove</code>: Pass.  (10/10)</h2>
@@ -83,8 +105,8 @@
             </ul>
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="getMostConstrainedUnsolvedSpace">
-            <h2><code>getMostConstrainedUnsolvedSpace</code>: <span class="info">Issues detected.</span>  (10/20)</h2>
-            <h4>Time elapsed: 0.012s</h4>
+            <h2><code>getMostConstrainedUnsolvedSpace</code>: Pass.  (20/20)</h2>
+            <h4>Time elapsed: 0.008s</h4>
             <ul>
               <li>
                 <h5>Returns None when the board has been fully solved. (PASS: 2/2)</h5>
@@ -99,10 +121,7 @@
                 <h5>Always returns the same value given the same board. (PASS: 1/1)</h5>
               </li>
               <li>
-                <h5>Returns one of the most constrained spaces for every unsolved board. <span class="error">(FAIL: 0/10)</span></h5>
-                <div class="feedback">
-                  <samp>Returns (8, 1) on board c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/invalid-boards/06.csv. Any of the following would be correct results: [(0, 5), (8, 2)]</samp>
-                </div>
+                <h5>Returns one of the most constrained spaces for every unsolved board. (PASS: 10/10)</h5>
               </li>
             </ul>
           </div>
@@ -112,7 +131,7 @@
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="Competency">
             <h2><code>Competency</code>: Not implemented. (0/20)</h2>
-            <h4>Time elapsed: 0.003s</h4>
+            <h4>Time elapsed: 0.001s</h4>
           </div>
         </div>
       </main>
