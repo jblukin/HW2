@@ -113,18 +113,18 @@ class Board():
     # makes a move, records it in its row, col, and box, and removes the space from unsolvedSpaces
     def makeMove(self, space, value):
 
-        if(self.isValidMove(space, value)):
-            self.valsInBoxes[self.spaceToBox(space[0], space[1])] = value
-            self.valsInRows[space[0]] = value
-            self.valsInCols[space[1]] = value
-            self.unsolvedSpaces.remove(space)
-            self.board[space] = value
+        self.valsInBoxes[self.spaceToBox(space[0], space[1])].add(value)
+        self.valsInRows[space[0]].add(value)
+        self.valsInCols[space[1]].add(value)
+        self.unsolvedSpaces.remove(space)
+        self.board[space] = value
 
     # removes the move, its record in its row, col, and box, and adds the space back to unsolvedSpaces
     def undoMove(self, space, value):
-        self.valsInBoxes[self.spaceToBox(space[0], space[1])] = None
-        self.valsInRows[space[0]] = None
-        self.valsInCols[space[1]] = None
+        
+        self.valsInBoxes[self.spaceToBox(space[0], space[1])].discard(value)
+        self.valsInRows[space[0]].discard(value)
+        self.valsInCols[space[1]].discard(value)
         self.unsolvedSpaces.add(space)
         self.board.__delitem__(space)
 
@@ -231,14 +231,15 @@ class Solver:
             return True
 
         for i in range(1,board.n2 + 1):
+
             if board.isValidMove(space, i):
                 board.makeMove(space, i)
 
                 if self.solveBoard(board):
                     return True
                 
-            elif space in board.board: 
-                board.undoMove(space, i)      
+                elif space in board.board: 
+                    board.undoMove(space, i)      
 
         return False
 

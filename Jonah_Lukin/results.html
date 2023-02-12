@@ -36,17 +36,17 @@
             <i class="material-icons">check_circle</i>
             <code>isValidMove</code> (10/10)
           </a>
-          <a class="mdl-navigation__link info" href="#getMostConstrainedUnsolvedSpace">
-            <i class="material-icons">feedback</i>
-            <code>getMostCon</code>... (10/20)
+          <a class="mdl-navigation__link pass" href="#getMostConstrainedUnsolvedSpace">
+            <i class="material-icons">check_circle</i>
+            <code>getMostCon</code>... (20/20)
           </a>
-          <a class="mdl-navigation__link info" href="#solve">
-            <i class="material-icons">feedback</i>
-            <code>solve</code> (9/30)
+          <a class="mdl-navigation__link pass" href="#solve">
+            <i class="material-icons">check_circle</i>
+            <code>solve</code> (30/30)
           </a>
-          <a class="mdl-navigation__link error" href="#Competency">
-            <i class="material-icons">error</i>
-            <code>Competency</code> (0/20)
+          <a class="mdl-navigation__link pass" href="#Competency">
+            <i class="material-icons">check_circle</i>
+            <code>Competency</code> (20/20)
           </a>
         </nav>
       </div>
@@ -54,11 +54,11 @@
         <div id="top"></div>
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
-            <h1>Test Results for A2: Sudoku (49/100)</h1>
+            <h1>Test Results for A2: Sudoku (100/100)</h1>
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="makeMove">
             <h2><code>makeMove</code>: Pass.  (10/10)</h2>
-            <h4>Time elapsed: 0.022s</h4>
+            <h4>Time elapsed: 0.020s</h4>
             <ul>
               <li>
                 <h5>Assigns space to value in the board. (PASS: 3/3)</h5>
@@ -73,7 +73,7 @@
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="undoMove">
             <h2><code>undoMove</code>: Pass.  (10/10)</h2>
-            <h4>Time elapsed: 0.016s</h4>
+            <h4>Time elapsed: 0.022s</h4>
             <ul>
               <li>
                 <h5>Deletes space from the board. (PASS: 3/3)</h5>
@@ -88,7 +88,7 @@
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="isValidMove">
             <h2><code>isValidMove</code>: Pass.  (10/10)</h2>
-            <h4>Time elapsed: 0.025s</h4>
+            <h4>Time elapsed: 0.036s</h4>
             <ul>
               <li>
                 <h5>Returns False when the space is not on the board. (PASS: 2/2)</h5>
@@ -105,8 +105,8 @@
             </ul>
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="getMostConstrainedUnsolvedSpace">
-            <h2><code>getMostConstrainedUnsolvedSpace</code>: <span class="info">Issues detected.</span>  (10/20)</h2>
-            <h4>Time elapsed: 0.008s</h4>
+            <h2><code>getMostConstrainedUnsolvedSpace</code>: Pass.  (20/20)</h2>
+            <h4>Time elapsed: 0.010s</h4>
             <ul>
               <li>
                 <h5>Returns None when the board has been fully solved. (PASS: 2/2)</h5>
@@ -121,49 +121,28 @@
                 <h5>Always returns the same value given the same board. (PASS: 1/1)</h5>
               </li>
               <li>
-                <h5>Returns one of the most constrained spaces for every unsolved board. <span class="error">(FAIL: 0/10)</span></h5>
-                <div class="feedback">
-                  <samp>Returns None on board c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/invalid-boards/singletonsOnly.csv. Any of the following would be correct results: [(1, 7), (2, 2), (3, 6), (4, 0), (1, 6), (0, 7), (6, 6), (5, 6)]</samp>
-                </div>
+                <h5>Returns one of the most constrained spaces for every unsolved board. (PASS: 10/10)</h5>
               </li>
             </ul>
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="solve">
-            <h2><code>solve</code>: <span class="info">Issues detected.</span>  (9/30)</h2>
-            <h4>Time elapsed: 0.011s</h4>
+            <h2><code>solve</code>: Pass.  (30/30)</h2>
+            <h4>Time elapsed: 0.016s</h4>
             <ul>
               <li>
-                <h5>Attempts to make moves in a single space, the most constrained unsolved space. <span class="error">(FAIL: 0/5)</span></h5>
-                <div class="feedback">
-                  <samp>Attempts to make a move in a space (4, 0) other than the most constrained space (3, 0) on board c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/invalid-boards/10.csv.</samp>
-                </div>
+                <h5>Attempts to make moves in a single space, the most constrained unsolved space. (PASS: 5/5)</h5>
               </li>
               <li>
-                <h5>Does not attempt any invalid values, and attempts each valid value exactly once (until a solution is found). <span class="error">(FAIL: 0/5)</span></h5>
-                <div class="feedback">
-                  <samp>Reports that board c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/invalid-boards/10.csv is unsolvable without attempting every possible value ({3}) for most constrained space (3, 0). (Attemped values: set().)</samp>
-                </div>
+                <h5>Does not attempt any invalid values, and attempts each valid value exactly once (until a solution is found). (PASS: 5/5)</h5>
               </li>
               <li>
                 <h5>Recursively calls solve exactly once for each move made, in order to test whether it leads to a solution. (PASS: 5/5)</h5>
               </li>
               <li>
-                <h5>Clears every move that does not lead to a solution. <span class="error">(FAIL: 0/5)</span></h5>
-                <div class="feedback">
-                  <samp>Tries clearing value 5 from space (4, 0), which is actually assigned to 4, on board c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/invalid-boards/10.csv.</samp>
-                </div>
+                <h5>Clears every move that does not lead to a solution. (PASS: 5/5)</h5>
               </li>
               <li>
-                <h5>Does not undo any correct moves or attempt any other moves after a solution is found. <span class="error">(FAIL: 0/2)</span></h5>
-                <div class="feedback">
-                  <samp>Leaves incorrect assignments on solvable board c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/named-boards/dolphin.csv.</samp>
-                </div>
-                <div class="feedback">
-                  <samp>Undoes correct moves on solvable board c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/test-1-easy/68.csv.</samp>
-                </div>
-                <div class="feedback">
-                  <samp>Did not attempt any moves on solvable board c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/test-3-hard/18.csv.</samp>
-                </div>
+                <h5>Does not undo any correct moves or attempt any other moves after a solution is found. (PASS: 2/2)</h5>
               </li>
               <li>
                 <h5>Never overwrites or clears any of the squares of the original board. (PASS: 2/2)</h5>
@@ -172,47 +151,24 @@
                 <h5>Returns True in the case where the entire board is already solved. (PASS: 2/2)</h5>
               </li>
               <li>
-                <h5>Returns True when a solution is found, indicating that the current state leads to a solution. <span class="error">(FAIL: 0/2)</span></h5>
-                <div class="feedback">
-                  <samp>Does not return True on solvable board c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/named-boards/dolphin.csv.</samp>
-                </div>
+                <h5>Returns True when a solution is found, indicating that the current state leads to a solution. (PASS: 2/2)</h5>
               </li>
               <li>
-                <h5>Returns False when no solution exists, because the most constrained cell cannot take any value. <span class="error">(FAIL: 0/2)</span></h5>
-                <div class="feedback">
-                  <samp>Does not return False on unsolvable board c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/invalid-boards/singletonsOnly.csv.</samp>
-                </div>
+                <h5>Returns False when no solution exists, because the most constrained cell cannot take any value. (PASS: 2/2)</h5>
               </li>
             </ul>
           </div>
           <div class="mdl-cell mdl-cell--12-col" id="Competency">
-            <h2><code>Competency</code>: <span class="error">Error.</span> (0/20)</h2>
-            <h4>Time elapsed: 0.003s</h4>
-            <samp>
-              Traceback (most recent call last):
-              <br>&nbsp;&nbsp;File &quot;c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\test_solve.py&quot;, line 479, in run
-              <br>&nbsp;&nbsp;&nbsp;&nbsp;s.solveBoard(test_board)
-              <br>&nbsp;&nbsp;File &quot;C:\Users/jbluk/OneDrive/Documents/IU/Spring 2023/Intro to AI\HW2P/test_a2/test_a2/HW2\Jonah_Lukin\a2.py&quot;, line 237, in solveBoard
-              <br>&nbsp;&nbsp;&nbsp;&nbsp;if self.solveBoard(board):
-              <br>&nbsp;&nbsp;File &quot;C:\Users/jbluk/OneDrive/Documents/IU/Spring 2023/Intro to AI\HW2P/test_a2/test_a2/HW2\Jonah_Lukin\a2.py&quot;, line 228, in solveBoard
-              <br>&nbsp;&nbsp;&nbsp;&nbsp;space = Board.getMostConstrainedUnsolvedSpace(board)
-              <br>&nbsp;&nbsp;File &quot;C:\Users/jbluk/OneDrive/Documents/IU/Spring 2023/Intro to AI\HW2P/test_a2/test_a2/HW2\Jonah_Lukin\a2.py&quot;, line 197, in getMostConstrainedUnsolvedSpace
-              <br>&nbsp;&nbsp;&nbsp;&nbsp;currentCheck = self.evaluateSpace(s)
-              <br>&nbsp;&nbsp;File &quot;C:\Users/jbluk/OneDrive/Documents/IU/Spring 2023/Intro to AI\HW2P/test_a2/test_a2/HW2\Jonah_Lukin\a2.py&quot;, line 174, in evaluateSpace
-              <br>&nbsp;&nbsp;&nbsp;&nbsp;for r in self.valsInRows[space[0]]:
-              <br>TypeError: &#x27;int&#x27; object is not iterable
-              <br>
-              <br>The above exception was the direct cause of the following exception:
-              <br>
-              <br>Traceback (most recent call last):
-              <br>&nbsp;&nbsp;File &quot;c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\grade\tests.py&quot;, line 174, in _test
-              <br>&nbsp;&nbsp;&nbsp;&nbsp;try: self.run(compilation_test)
-              <br>&nbsp;&nbsp;File &quot;c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\test_solve.py&quot;, line 481, in run
-              <br>&nbsp;&nbsp;&nbsp;&nbsp;self.reraise(err, &#x27;An uncaught exception occurred while solving &#x27;+case.represent())
-              <br>&nbsp;&nbsp;File &quot;c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\grade\tests.py&quot;, line 163, in reraise
-              <br>&nbsp;&nbsp;&nbsp;&nbsp;raise err.__class__(message) from err
-              <br>TypeError: An uncaught exception occurred while solving c:\Users\jbluk\OneDrive\Documents\IU\Spring 2023\Intro to AI\HW2P\test_a2\test_a2\data/tests/invalid-boards/10.csv
-            </samp>
+            <h2><code>Competency</code>: Pass.  (20/20)</h2>
+            <h4>Time elapsed: 3.108s</h4>
+            <ul>
+              <li>
+                <h5>Leaves the board in its original state if no solution exists. (PASS: 5/5)</h5>
+              </li>
+              <li>
+                <h5>After running on a solvable board, the board&#x27;s final state is the same as the solution. (PASS: 15/15)</h5>
+              </li>
+            </ul>
           </div>
         </div>
       </main>
